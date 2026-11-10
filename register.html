@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Your Company - Job Me</title>
+    <meta
+      name="description"
+      content="Create an employer account on Job Me to start posting jobs, reviewing CVs, and hiring top talent."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/all.min.css" />
+
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <div class="register-page-wrapper">
+      <!-- ===== LEFT SIDE ===== -->
+      <div class="register-info-side">
+        <a class="logo-box" href="index.html" aria-label="Job Me Home">
+          <img
+            src="image/rdiv-removebg-preview.png"
+            alt="Job Me Logo"
+            class="register-logo"
+            width="160"
+            height="40"
+          />
+        </a>
+        <h1>Join Job Me as an Employer</h1>
+        <p class="info-description">
+          Attract, screen, and hire the best professionals using our specialized
+          corporate tools.
+        </p>
+
+        <div class="benefit-item">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          <span>Post jobs and search verified candidate CVs instantly.</span>
+        </div>
+        <div class="benefit-item">
+          <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+          <span>Track applications with an intuitive hiring dashboard.</span>
+        </div>
+        <div class="benefit-item">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span
+            >Secure company profile trusted by thousands of job seekers.</span
+          >
+        </div>
+
+        <div class="register-testimonial">
+          <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+          <p>
+            “Job Me helped us find exceptional talent in record time. The
+            dashboard is a game-changer.”
+          </p>
+          <span class="testimonial-author">— HR Manager, TechCorp</span>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT SIDE (FORM) ===== -->
+      <div class="register-form-side">
+        <div class="register-card">
+          <h2>Create Employer Account</h2>
+          <p class="subtitle">
+            Please fill out the form below to register your business.
+          </p>
+
+          <form class="register-form" id="registerForm" novalidate>
+            <div class="input-group">
+              <label for="comp-name">Company Name *</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-regular fa-building" aria-hidden="true"></i>
+                <input
+                  type="text"
+                  id="comp-name"
+                  placeholder="e.g. JobMe Tech"
+                  required
+                  autocomplete="organization"
+                />
+              </div>
+              <span class="error-message" id="comp-name-error"
+                >Please enter a company name.</span
+              >
+            </div>
+
+            <div class="input-group">
+              <label for="comp-email">Business Email *</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                <input
+                  type="email"
+                  id="comp-email"
+                  placeholder="hr@company.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <span class="error-message" id="comp-email-error"
+                >Please enter a valid email address.</span
+              >
+            </div>
+
+            <div class="input-group">
+              <label for="comp-phone">Phone Number</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <input
+                  type="tel"
+                  id="comp-phone"
+                  placeholder="+966 50 000 0000"
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="comp-industry">Industry *</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                <select id="comp-industry" required>
+                  <option value="" disabled selected>Select Industry</option>
+                  <option value="it">Information Technology</option>
+                  <option value="finance">Finance & Banking</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="marketing">Marketing & Sales</option>
+                  <option value="education">Education</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <span class="error-message" id="comp-industry-error"
+                >Please select an industry.</span
+              >
+            </div>
+
+            <div class="input-group">
+              <label for="comp-password">Password *</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="comp-password"
+                  placeholder="At least 8 characters"
+                  required
+                  minlength="8"
+                  autocomplete="new-password"
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  aria-label="Toggle password visibility"
+                >
+                  <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+              <span class="error-message" id="comp-password-error"
+                >Password must be at least 8 characters.</span
+              >
+            </div>
+
+            <div class="form-checkbox">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">
+                I agree to the <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>
+              </label>
+              <span class="error-message" id="terms-error"
+                >You must agree to the terms.</span
+              >
+            </div>
+
+            <button type="submit" class="btn-register-submit">
+              <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Create
+              Account
+            </button>
+          </form>
+
+          <a href="index.html" class="back-to-home">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to
+            Homepage
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+
+    <script src="JS/main.js"></script>
+  </body>
+</html>

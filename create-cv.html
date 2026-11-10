@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Your Professional CV - Job Me</title>
+    <meta
+      name="description"
+      content="Build a professional CV online with Job Me. Fill in your details and download a polished PDF."
+    />
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body class="cv-builder-body">
+    <!-- Header -->
+    <header class="cv-builder-header">
+      <div class="header-left">
+        <a href="index.html" class="cv-back-home" aria-label="Back to Home">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Home
+        </a>
+        <span class="builder-status">
+          <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+          <span id="saveStatus">Auto Saving...</span>
+        </span>
+      </div>
+      <div class="header-logo">
+        <img
+          src="image/rdiv-removebg-preview.png"
+          alt="Job Me Logo"
+          width="120"
+          height="35"
+          loading="lazy"
+        />
+      </div>
+      <div class="header-right">
+        <button type="button" class="btn-outline btn-preview-toggle">
+          <i class="fa-solid fa-eye" aria-hidden="true"></i>
+          <span class="btn-label">Preview</span>
+        </button>
+        <button
+          type="button"
+          class="btn-filled btn-download-cv"
+          id="downloadCvBtn"
+        >
+          <i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="cv-builder-container">
+      <!-- Form Panel -->
+      <section class="form-panel" aria-labelledby="form-title">
+        <!-- Stepper -->
+        <div class="cv-stepper" role="tablist">
+          <div
+            class="step active"
+            data-step="1"
+            role="tab"
+            aria-selected="true"
+          >
+            <span class="step-number">1</span>
+            <span class="step-label">Personal</span>
+          </div>
+          <div class="step" data-step="2" role="tab" aria-selected="false">
+            <span class="step-number">2</span>
+            <span class="step-label">Experience</span>
+          </div>
+          <div class="step" data-step="3" role="tab" aria-selected="false">
+            <span class="step-number">3</span>
+            <span class="step-label">Education</span>
+          </div>
+          <div class="step" data-step="4" role="tab" aria-selected="false">
+            <span class="step-number">4</span>
+            <span class="step-label">Skills</span>
+          </div>
+        </div>
+
+        <form id="cvForm" class="cv-form" novalidate>
+          <!-- Step 1: Personal -->
+          <div class="form-step-content active" data-step-content="1">
+            <h3 id="form-title">Personal Information</h3>
+            <p class="step-desc">
+              Introduce yourself to employers with your core contact and
+              professional headline details.
+            </p>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="cv-fullname"
+                  >Full Name <span class="required-star">*</span></label
+                >
+                <input
+                  type="text"
+                  id="cv-fullname"
+                  placeholder="John Doe"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="input-group">
+                <label for="cv-title"
+                  >Professional Title
+                  <span class="required-star">*</span></label
+                >
+                <input
+                  type="text"
+                  id="cv-title"
+                  placeholder="e.g. Senior Frontend Developer"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="cv-email"
+                  >Email Address <span class="required-star">*</span></label
+                >
+                <input
+                  type="email"
+                  id="cv-email"
+                  placeholder="johndoe@example.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="input-group">
+                <label for="cv-phone"
+                  >Phone Number <span class="required-star">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="cv-phone"
+                  placeholder="+966 50 000 0000"
+                  required
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="cv-location">Location</label>
+                <input
+                  type="text"
+                  id="cv-location"
+                  placeholder="Riyadh, Saudi Arabia"
+                  autocomplete="address-level2"
+                />
+              </div>
+              <div class="input-group">
+                <label for="cv-linkedin">LinkedIn Profile URL</label>
+                <input
+                  type="url"
+                  id="cv-linkedin"
+                  placeholder="linkedin.com/in/username"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="cv-summary"
+                >Professional Summary
+                <span class="required-star">*</span></label
+              >
+              <textarea
+                id="cv-summary"
+                rows="5"
+                placeholder="Briefly describe your career background, key achievements, and top skills..."
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Step 2: Experience -->
+          <div class="form-step-content" data-step-content="2">
+            <div class="section-header-dynamic">
+              <h3>Work Experience</h3>
+              <button
+                type="button"
+                class="btn-secondary-sm"
+                id="addExperienceBtn"
+              >
+                <i class="fa-solid fa-plus" aria-hidden="true"></i> Add Position
+              </button>
+            </div>
+            <p class="step-desc">
+              List your relevant work history starting from the most recent one.
+            </p>
+            <div id="experienceItemsContainer"></div>
+          </div>
+
+          <!-- Step 3: Education -->
+          <div class="form-step-content" data-step-content="3">
+            <div class="section-header-dynamic">
+              <h3>Education</h3>
+              <button
+                type="button"
+                class="btn-secondary-sm"
+                id="addEducationBtn"
+              >
+                <i class="fa-solid fa-plus" aria-hidden="true"></i> Add
+                Education
+              </button>
+            </div>
+            <p class="step-desc">
+              Add your academic background, degrees, and institutions.
+            </p>
+            <div id="educationItemsContainer"></div>
+          </div>
+
+          <!-- Step 4: Skills -->
+          <div class="form-step-content" data-step-content="4">
+            <h3>Skills & Languages</h3>
+            <p class="step-desc">
+              Add key professional skills and languages you master.
+            </p>
+
+            <div class="input-group">
+              <label for="cv-skills-input"
+                >Skills (Comma Separated)
+                <span class="required-star">*</span></label
+              >
+              <input
+                type="text"
+                id="cv-skills-input"
+                placeholder="JavaScript, React, CSS3, UI Design, Team Leadership"
+                required
+              />
+              <small class="helper-text">Separate skills with commas</small>
+            </div>
+
+            <div class="input-group" style="margin-top: 1.5rem">
+              <label for="cv-languages-input"
+                >Languages (Comma Separated)
+                <span class="required-star">*</span></label
+              >
+              <input
+                type="text"
+                id="cv-languages-input"
+                placeholder="English (Fluent), Arabic (Native)"
+                required
+              />
+              <small class="helper-text">Separate languages with commas</small>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="form-navigation">
+            <button type="button" class="btn-outline btn-wizard-prev" disabled>
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back
+            </button>
+            <button type="button" class="btn-filled btn-wizard-next">
+              Next Step
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Preview Panel -->
+      <section class="preview-panel" aria-label="CV Preview">
+        <div class="a4-page" id="cvA4Page">
+          <div class="preview-header">
+            <h1 id="view-fullname">Your Full Name</h1>
+            <h2 id="view-title">Professional Title</h2>
+            <div class="preview-meta">
+              <span id="view-email-box" style="display: none">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <span id="view-email"></span>
+              </span>
+              <span id="view-phone-box" style="display: none">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <span id="view-phone"></span>
+              </span>
+              <span id="view-location-box" style="display: none">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span id="view-location"></span>
+              </span>
+              <span id="view-linkedin-box" style="display: none">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                <span id="view-linkedin"></span>
+              </span>
+            </div>
+          </div>
+
+          <div class="preview-body">
+            <div class="preview-section" id="view-summary-section">
+              <h3 class="preview-sec-title">Professional Summary</h3>
+              <p id="view-summary" class="preview-text-block">
+                Your profile summary will appear here once you type it...
+              </p>
+            </div>
+
+            <div
+              class="preview-section"
+              id="view-experience-section"
+              style="display: none"
+            >
+              <h3 class="preview-sec-title">Work Experience</h3>
+              <div id="view-experience-list"></div>
+            </div>
+
+            <div
+              class="preview-section"
+              id="view-education-section"
+              style="display: none"
+            >
+              <h3 class="preview-sec-title">Education</h3>
+              <div id="view-education-list"></div>
+            </div>
+
+            <div class="preview-split-row">
+              <div
+                class="preview-section half-width"
+                id="view-skills-section"
+                style="display: none"
+              >
+                <h3 class="preview-sec-title">Skills</h3>
+                <div id="view-skills-list" class="skills-tags-container"></div>
+              </div>
+              <div
+                class="preview-section half-width"
+                id="view-languages-section"
+                style="display: none"
+              >
+                <h3 class="preview-sec-title">Languages</h3>
+                <div
+                  id="view-languages-list"
+                  class="skills-tags-container"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="JS/main.js"></script>
+  </body>
+</html>

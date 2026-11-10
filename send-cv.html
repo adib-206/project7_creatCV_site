@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send & Apply with Your CV - Job Me</title>
+    <meta
+      name="description"
+      content="Send your professional CV directly to employers with a personalized cover letter."
+    />
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body class="bg-light-gray">
+    <!-- ===== SENDING OVERLAY ===== -->
+    <div
+      class="sending-overlay"
+      id="sendingOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sendingStatusTitle"
+    >
+      <div class="sending-status-card">
+        <div class="spinner-box" id="spinnerBox">
+          <i class="fa-solid fa-paper-plane fa-spin" aria-hidden="true"></i>
+        </div>
+        <div class="success-check-box" id="successBox" style="display: none">
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+        </div>
+        <h3 id="sendingStatusTitle">Sending Application...</h3>
+        <p id="sendingStatusDesc">
+          We are securely processing and transmitting your CV to the employer.
+        </p>
+        <button
+          type="button"
+          class="btn-filled"
+          id="btnCloseOverlay"
+          style="display: none; margin-top: 1.5rem"
+        >
+          <i class="fa-solid fa-check" aria-hidden="true"></i> Done
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <main class="send-cv-container">
+      <div class="send-cv-card">
+        <!-- Header -->
+        <div class="card-header-accent">
+          <a href="index.html" class="back-to-dashboard">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to
+            Home
+          </a>
+          <h2>Direct CV Application</h2>
+          <p>
+            Fill out the employer's details and send your professional profile
+            instantly.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form id="sendCvForm" class="send-cv-form" novalidate>
+          <!-- Employer Details -->
+          <div class="form-section-group">
+            <h4 class="group-title">
+              <i class="fa-solid fa-building" aria-hidden="true"></i> Employer
+              Details
+            </h4>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="company-email"
+                  >Company / Recipient Email
+                  <span class="required-star">*</span></label
+                >
+                <div class="input-icon-wrapper">
+                  <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                  <input
+                    type="email"
+                    id="company-email"
+                    placeholder="hr@company.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <span class="error-message" id="company-email-error"
+                  >Please enter a valid email address.</span
+                >
+              </div>
+              <div class="input-group">
+                <label for="company-name"
+                  >Company Name <span class="required-star">*</span></label
+                >
+                <div class="input-icon-wrapper">
+                  <i class="fa-regular fa-building" aria-hidden="true"></i>
+                  <input
+                    type="text"
+                    id="company-name"
+                    placeholder="e.g. Saudi Aramco, Google"
+                    required
+                    autocomplete="organization"
+                  />
+                </div>
+                <span class="error-message" id="company-name-error"
+                  >Please enter a company name.</span
+                >
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="job-title"
+                >Target Job Title <span class="required-star">*</span></label
+              >
+              <div class="input-icon-wrapper">
+                <i class="fa-regular fa-briefcase" aria-hidden="true"></i>
+                <input
+                  type="text"
+                  id="job-title"
+                  placeholder="e.g. Frontend Developer, Human Resources Manager"
+                  required
+                />
+              </div>
+              <span class="error-message" id="job-title-error"
+                >Please enter a job title.</span
+              >
+            </div>
+          </div>
+
+          <!-- CV Source -->
+          <div class="form-section-group">
+            <h4 class="group-title">
+              <i class="fa-solid fa-file-invoice" aria-hidden="true"></i> Select
+              CV Attachment
+            </h4>
+
+            <div
+              class="cv-source-options"
+              role="radiogroup"
+              aria-label="CV source selection"
+            >
+              <label class="source-card active" for="source-live">
+                <input
+                  type="radio"
+                  name="cv_source"
+                  id="source-live"
+                  value="live"
+                  checked
+                />
+                <div class="source-content">
+                  <i
+                    class="fa-solid fa-wand-magic-sparkles"
+                    aria-hidden="true"
+                  ></i>
+                  <div>
+                    <h5>Use Job Me Live CV</h5>
+                    <p id="live-cv-status">
+                      Your active dynamic template is selected
+                    </p>
+                  </div>
+                </div>
+              </label>
+
+              <label class="source-card" for="source-upload">
+                <input
+                  type="radio"
+                  name="cv_source"
+                  id="source-upload"
+                  value="upload"
+                />
+                <div class="source-content">
+                  <i class="fa-solid fa-file-arrow-up" aria-hidden="true"></i>
+                  <div>
+                    <h5>Upload Custom File</h5>
+                    <p>Attach a local PDF or DOCX file</p>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Upload Zone -->
+            <div class="drag-drop-zone" id="uploadZone" style="display: none">
+              <i
+                class="fa-solid fa-cloud-arrow-up cloud-icon"
+                aria-hidden="true"
+              ></i>
+              <p>
+                Drag and drop your CV file here or
+                <span class="browse-text">Browse</span>
+              </p>
+              <span class="file-limits">Supports PDF, DOCX (Max 5MB)</span>
+              <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.docx"
+                style="display: none"
+              />
+              <div
+                class="attached-file-badge"
+                id="attachedFileBadge"
+                style="display: none"
+              >
+                <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+                <span id="fileNameSpan">filename.pdf</span>
+                <button
+                  type="button"
+                  class="btn-remove-file"
+                  id="btnRemoveFile"
+                  aria-label="Remove file"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cover Letter -->
+          <div class="form-section-group">
+            <div class="cover-letter-header">
+              <label for="cover-letter"
+                >Cover Letter / Message to Hiring Manager</label
+              >
+              <div class="template-selectors">
+                <span class="tpl-label">Fast Templates:</span>
+                <button type="button" class="btn-tpl" data-tpl="formal">
+                  Formal
+                </button>
+                <button type="button" class="btn-tpl" data-tpl="tech">
+                  Technical
+                </button>
+                <button type="button" class="btn-tpl" data-tpl="clear">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <textarea
+              id="cover-letter"
+              rows="7"
+              placeholder="Introduce yourself briefly and explain why you are a perfect fit for this role..."
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-send-cv-application">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send CV
+            Application
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="JS/main.js"></script>
+  </body>
+</html>
